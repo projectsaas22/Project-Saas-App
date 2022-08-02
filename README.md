@@ -1,16 +1,11 @@
-# sensordemo
+# Project Saas
 
-A new Flutter project.
+An app to calculate the breathing rate using unmodified smartphones.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+The app is currently under development. If you want to test the app please follow the instruction given below (Testing is only available for andriod phones at the moment):
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Download the apk file from the given link (https://drive.google.com/file/d/1o7yD9rolZTIJWL0OO7mo5Z4GCO2eHyqP/view?usp=sharing)
+- Install the downloaded apk files. You might have to change some settings, please follow the instruction and allow access.
+- You can now see Accelerometer and Gyrometer reading extracted from the movement of your device.
