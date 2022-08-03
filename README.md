@@ -1,6 +1,6 @@
 # sensordemo
 
-A new Flutter project.
+An app to estimate the breating rate using unmodified smartphones.
 
 ## Getting Started
 
