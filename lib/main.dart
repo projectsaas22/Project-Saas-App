@@ -287,15 +287,18 @@ class _MyHomePageState extends State<MyHomePage> {
   void startSensor() {
     final sheet = excel[excel.getDefaultSheet()!];
     sheet.cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 1)).value =
-        "Timestamp";
+        "S.N";
 
     sheet.cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: 1)).value =
-        "Accelerometer-X";
+        "Timestamp";
 
     sheet.cell(CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: 1)).value =
-        "Accelerometer-Y";
+        "Accelerometer-X";
 
     sheet.cell(CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: 1)).value =
+        "Accelerometer-Y";
+
+    sheet.cell(CellIndex.indexByColumnRow(columnIndex: 5, rowIndex: 1)).value =
         "Accelerometer-Z";
 
     _streamSubscriptions.add(
@@ -304,20 +307,24 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             _accelerometerValues = <double>[event.x, event.y, event.z];
           });
-          print(DateFormat('kk:mm:ss:ms').format(DateTime.now()));
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: rows))
-              .value = DateFormat('kk:mm:ss:ms').format(DateTime.now());
+              .value = rows - 1;
+
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: rows))
-              .value = event.x;
+              .value = DateFormat('kk:mm:ss:ms').format(DateTime.now());
 
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: rows))
-              .value = event.y;
+              .value = event.x;
 
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 4, rowIndex: rows))
+              .value = event.y;
+
+          sheet
+              .cell(CellIndex.indexByColumnRow(columnIndex: 5, rowIndex: rows))
               .value = event.z;
 
           rows++;
