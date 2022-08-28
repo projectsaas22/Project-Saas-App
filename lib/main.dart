@@ -41,6 +41,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var stopwatch = Stopwatch();
+
   List<double>? _accelerometerValues;
   List<double>? _userAccelerometerValues;
   List<double>? _gyroscopeValues;
@@ -285,6 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // }
 
   void startSensor() {
+    stopwatch.start();
     final sheet = excel[excel.getDefaultSheet()!];
     sheet.cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 1)).value =
         "S.N";
@@ -313,7 +316,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: rows))
-              .value = DateFormat('kk:mm:ss:ms').format(DateTime.now());
+              .value = stopwatch.elapsedMicroseconds;
 
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: rows))
@@ -326,6 +329,8 @@ class _MyHomePageState extends State<MyHomePage> {
           sheet
               .cell(CellIndex.indexByColumnRow(columnIndex: 5, rowIndex: rows))
               .value = event.z;
+
+          print(stopwatch.elapsedMicroseconds);
 
           rows++;
         },
@@ -362,6 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void stopSensor() async {
     for (final subscription in _streamSubscriptions) {
+      stopwatch.stop();
       subscription.cancel();
     }
     // var saveExcel = writeCounter(excel);
